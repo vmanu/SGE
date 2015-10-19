@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
+        <script>
+            var date = new Date();
+            var arrayMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            var arrayMeses30 = ["Abril", "Junio", "Septiembre", "Noviembre"];
+            var nDias;
+            $(document).ready(function () {
+                var mes = date.getMonth();
+                configuraDias(mes);
+                //
+                $("#mes").html();
+                $("#anno").html();
+                for (var i = 0; i < arrayMeses.length; i++) {
+                    $("#mes").append("<option value='" + arrayMeses[i] + "'>" + arrayMeses[i] + "</option>");
+                }
+                for (var i = 1990; i <= 2020; i++) {
+                    $("#anno").append("<option value='" + i + "'>" + i + "</option>");
+                }
+                //
+                $("#dia").val(date.getDate());
+                $("#mes").val(arrayMeses[mes]);
+                $("#anno").val(date.getFullYear());
+            });
+
+            function configuraDias(mes) {
+                var b30 = false;
+                var bFeb = false;
+                if (arrayMeses[mes] === "Febrero") {
+                    bFeb = true;
+                } else {
+                    for (var i = 0; i < arrayMeses30.length&&!b30; i++) {
+                        if (arrayMeses30[i] === arrayMeses[mes]) {
+                            b30 = true;
+                        }
+                    }
+                }
+                if (bFeb) {
+                    nDias = 28;
+                } else {
+                    if (b30) {
+                        nDias = 30;
+                    } else {
+                        nDias = 31;
+                    }
+                }
+                $("#dia").html("");
+                for (var i = 0; i < nDias; i++) {
+                    $("#dia").append("<option value='" + (i + 1) + "'>" + (i + 1) + "</option>");
+                }
+            }
+            
+            function cambiaMes(){
+                var mes=$("#mes").val();
+                var i=0;
+                var sal=false;
+                var dia=$("#dia").val();
+                while(i<arrayMeses.length&&!sal){
+                    if(mes===arrayMeses[i]){
+                        sal=true;
+                    }else{
+                        i++;
+                    }
+                }
+                configuraDias(i);
+                $("#dia").val(dia);
+                mensaje();
+            }
+            
+            function mensaje(){
+                if (!(($("#mes").val()==arrayMeses[date.getMonth()]&&$("#dia").val()==date.getDate())&&($("#anno").val()==date.getFullYear()))){
+                    alert("Esta fecha no coincide con la fecha de hoy");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <select name="Dia" id="dia" onchange="mensaje()">
+        </select>
+        <select name="Mes" id="mes" onchange="cambiaMes()">
+        </select>
+        <select name="Anno" id="anno" onchange="mensaje()"><!--podria hacerse con otro metodo, ya que aqui se podria controlar los años bisiestos para el caso de mes FEBRERO, pero no se pide-->
+        </select>
+        <div id="muestra"></div>
+    </body>
+</html>

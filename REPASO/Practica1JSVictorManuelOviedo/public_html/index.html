@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>MiHTML JAVASCRIPT</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
+
+        <script>
+            var dni;
+            var miLetra;
+            var aBaseDato = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"];
+            var bsal;
+            $("document").ready(function () {
+                var mensaje = "Introduzca DNI";
+                do {
+                    bsal = true;
+                    dni = prompt(mensaje);
+                    if (dni === null) {
+                        bsal = false;
+                        mensaje = "Ha pulsado cancelar, por favor, introduzca DNI y pulse aceptar.";
+                    } else {
+                        if (dni === "") {
+                            bsal = false;
+                            mensaje = "No ha introducido valor alguno, por favor, introduzca DNI y pulse aceptar.";
+                        }else{
+                            dni=parseInt(dni);
+                            if(isNaN(dni)){
+                                bsal=false;
+                                mensaje = "No ha introducido valor numérico, por favor, introduzca DNI y pulse aceptar.";
+                            }else{
+                                var dnires = dni % 23;
+                                miLetra = aBaseDato[dnires];
+                                $("#muestra").text(dni + miLetra);
+                            }
+                        }
+                    }
+                    
+                } while (!bsal);
+            });
+        </script>
+    </head>
+    <body>
+        <div id="muestra"></div>
+    </body>
+</html>

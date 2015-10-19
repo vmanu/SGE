@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
+        <script>
+            var bRead;
+            var bWrite;
+            var bExecute;
+            document.ready(function(){
+                bRead=false;
+                bWrite=false;
+                bExecute=false;
+            });
+            
+            function calcula(valor){
+                switch(valor){
+                    case 0:
+                        bRead=!bRead;
+                        break;
+                    case 1:
+                        bWrite=!bWrite;
+                        break;
+                    case 2:
+                        bExecute=!bExecute;
+                        break;
+                }
+                $("#muestra").val(dameResultado());
+            }
+            
+            function dameResultado(){
+                var result=0*1;
+                if(bRead){
+                    result+=4;
+                }
+                if(bWrite){
+                    result+=2;
+                }
+                if(bExecute){
+                    result+=1;
+                }
+                return result;
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr><td>Lectura</td><td>Escritura</td><td>Ejecución</td></tr>
+            <tr><td><input type="checkbox" name="Ejecucion" value="Lectura" onclick="calcula(0)"/></td><td><input type="checkbox" name="Ejecucion" value="Escritura" onclick="calcula(1)"/></td><td><input type="checkbox" name="Ejecucion" value="Ejecucion"  onclick="calcula(2)"/></td></tr>
+            <tr><td colspan="3"><input id="muestra"/></td></tr>
+        </table>
+    </body>
+</html>

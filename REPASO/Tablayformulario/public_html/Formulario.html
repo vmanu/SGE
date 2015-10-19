@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <form method="GET" action="prueba.html">
+                <input name="dni" placeholder="DNI" pattern="[0-9]{8}[a-zA-Z]{1}"/><br/>
+                <input name="apellidos" placeholder="Apellidos" maxlength="80"/><br/>
+                <input name="nombre" placeholder="Nombre" maxlength="30"/><br/>
+                <input name="nombreusuario" placeholder="Nickname"/><br/>
+                <input name="email" placeholder="e-mail"/><br/>
+                <input name="contrasenna" placeholder="Contraseña" maxlength="10"/><br/>Sexo: 
+                <input name="sexo" value="Masculino" type="radio"/>Masculino
+                <input name="sexo" value="Femenino" type="radio"/>Femenino<br/>
+                <input type="file"/>  <br/>Enviar al correo
+                <input name="enviarcorreosi" value="Enviar al correo" checked="" type="checkbox"/><br/>
+                <button type="button"><img src="ANDROID.png" style="height: 200px ;width: 200px"/></button><br/>
+                <input type="submit" value="ENVIAR"/>
+                <input type="reset" value="Resetear"/>
+            </form>
+        </div>
+    </body>
+</html>

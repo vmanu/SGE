@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <span style="font-weight: bold">NUEVO PRODUCTO</span><br/><br/>
+            <form method="GET" action="destino ficticio.html">
+                <fieldset name="Datos del Producto">
+                    <legend>Datos del Producto</legend>
+                    Nombre del Producto<br/>
+                    <input name="NombreProducto"><br/><br/>
+                    Descripción<br/>
+                    <textarea name="Descripcion" rows="6" cols="60"></textarea>
+                    <br/><br/>
+                    Foto
+                    <input type="file" name="foto"/>
+                </fieldset><br/>
+                <fieldset name="Datos added">
+                    <legend>Datos Añadidos</legend>
+                    Precio <input name="Precio"/> € Tipo de Impuesto Asociado
+                    <select name="impuesto">
+                        <option value="4">4%</option>
+                        <option value="5">5%</option>
+                        <option value="6">6%</option>
+                        <option value="7">7%</option>
+                        <option value="8">8%</option>
+                        <option value="9">9%</option>
+                    </select><br/><br/>
+                    Descuento o promoción a aplicar<br/>
+                    <input name="Desc" type="radio" value="Ninguno" checked=""/> Ninguno<br/>
+                    <input name="Desc" type="radio" value="Transport"/> Transporte gratuito<br/>
+                    <input name="Desc" type="radio" value="Descuento"/> Descuento<br/><br/>
+                    <input name="contador" type="checkbox"/> Añadir contador de visitas<br/>
+                </fieldset>
+                <input type="submit" value="Guardar Producto"/>
+            </form>
+        </div>
+    </body>
+</html>
