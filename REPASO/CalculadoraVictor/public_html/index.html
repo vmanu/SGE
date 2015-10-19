@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script>
+            var op1 = "";
+            var op2 = "";
+            var cadena = "";
+            var operador = "";
+            var boperador = false;//Controla si es op1 ó op2
+
+            function pulsar(valor) {
+                cadena = cadena + valor;
+                $("#resultado").val(cadena);
+                if (!boperador) {
+                    op1 = op1 + valor;
+                } else {
+                    op2 = op2 + valor;
+                }
+            }
+
+            function operacion(valor) {
+                cadena = cadena + valor;
+                $("#resultado").val(cadena);
+                if (!boperador) {
+                    op1 = parseInt(op1);
+                    if(isNaN(op1)){
+                        op1=0*1;
+                    }
+                    boperador = true;
+                } else {
+                    switch (operador) {
+                        case "+":
+                            op1 = op1 + parseInt(op2);
+                            break;
+                        case "-":
+                            op1 = op1 - parseInt(op2);
+                            break;
+                    }
+                    op2 = "";
+                }
+                operador = valor;
+            }
+
+            function igual() {
+                var result;
+                op2=parseInt(op2);
+                if(isNaN(op2)){
+                    op2=0*1;
+                }
+                switch (operador) {
+                    case "+":
+                        result=op1+op2;
+                        break;
+                    case "-":
+                        result=op1-op2;
+                        break;
+                }
+                $("#resultado").val(result);
+                op1 = "";
+                op2 = "";
+                cadena = "";
+                operador = "";
+                boperador = false;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="col-xs-4">
+            <input class="col-xs-12" type="text" id="resultado">
+            <input class="col-xs-4" type="button" id="1" value="1" onclick="pulsar(1)">
+            <input class="col-xs-4" type="button" id="2" value="2" onclick="pulsar(2)">
+            <input class="col-xs-4" type="button" id="3" value="3" onclick="pulsar(3)">
+            <input class="col-xs-4" type="button" id="4" value="4" onclick="pulsar(4)">
+            <input class="col-xs-4" type="button" id="5" value="5" onclick="pulsar(5)">
+            <input class="col-xs-4" type="button" id="6" value="6" onclick="pulsar(6)">
+            <input class="col-xs-4" type="button" id="7" value="7" onclick="pulsar(7)">
+            <input class="col-xs-4" type="button" id="8" value="8" onclick="pulsar(8)">
+            <input class="col-xs-4" type="button" id="9" value="9" onclick="pulsar(9)">
+            <input class="col-xs-4" type="button" id="0" value="0" onclick="pulsar(0)">
+            <input class="col-xs-4" type="button" id="sumar" value="+" onclick="operacion('+')">
+            <input class="col-xs-4" type="button" id="restar" value="-" onclick="operacion('-')">
+            <input class="col-xs-12" type="button" id="igual" value="=" onclick="igual()">
+        </div>
+    </body>
+</html>
