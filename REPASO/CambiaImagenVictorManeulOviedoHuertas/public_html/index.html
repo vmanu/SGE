@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
+        <script>
+            var bimage=true;//Este es el estado cuando esté el pinguino
+            function cambia(){
+                if(bimage){
+                    bimage=false;
+                    document.getElementById('imagen').src = "simbolo-windows.jpg";
+                }else{
+                    bimage=true;
+                    document.getElementById('imagen').src = "penguin-8641_640.png";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="math">¿¿¿CUAL TE GUSTA MAS???</div>
+        <img src="penguin-8641_640.png" id="imagen" onmouseover="cambia()" onmouseout="cambia()" alt="" style="width:100px;height: 100px"/>
+        <input type="button" value="click" onclick="cambia()"/>
+    </body>
+</html>
